@@ -44,6 +44,11 @@ class Article
      */
     private $payments;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $premium;
+
     public function __construct()
     {
         $this->payments = new ArrayCollection();
@@ -128,6 +133,18 @@ class Article
                 $payment->setArticle(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPremium(): ?bool
+    {
+        return $this->premium;
+    }
+
+    public function setPremium(bool $premium): self
+    {
+        $this->premium = $premium;
 
         return $this;
     }
