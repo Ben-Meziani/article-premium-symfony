@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue!
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+		{% endfor %}
+		{% for message in app.flashes('message') %}
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+		{% endfor %}
+		<h1 class="mt-5 mb-5 text-center">Articles</h1>
+	
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, eius. Illo doloremque reiciendis placeat obcaecati debitis eum tempora quibusdam similique dolores dolorum assumenda tenetur, consequatur repellat fuga excepturi nesciunt modi?</p>
+
+		<h2 class="mt-5 mb-5 text-center">Derniers articles</h2>
+
+
+		<div class="slider owl-carousel">
+			{% for article in articles %}
+				<div class="card">
+					<div class="content d-flex flex-column">
+						<div class="title">Poste:
+							{{ article.title }}</div>
+					</div>
+					<div class="mx-auto mb-2">
+						{# <a href="{{ path('article.show', {id: article.id}) }}" class="d-inline-block"> 
+							<button class="btn btn-danger">Lire plus</button>
+						</a>#}
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="text-center">
+			{# <a href="{{ path('article.index') }}">
+				<button class="btn btn-danger">Voir toutes les offres</button>
+			</a> #}
+		</div>
+
+
+	{% endblock %}
