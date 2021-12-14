@@ -30,12 +30,12 @@ class Article
     private $description;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
+     * @ORM\Column(type="datetime")
      */
     private $created_at;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
+     * @ORM\Column(type="datetime")
      */
     private $updated_at;
 
@@ -51,6 +51,9 @@ class Article
 
     public function __construct()
     {
+        
+        $this->created_at = new \DateTime();
+        $this->updated_at = new \DateTime();
         $this->payments = new ArrayCollection();
     }
 
@@ -83,29 +86,29 @@ class Article
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $created_at): self
+    public function setCreatedAt(\DateTimeInterface $created_at): self
     {
         $this->created_at = $created_at;
 
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeImmutable
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updated_at;
     }
 
-    public function setUpdatedAt(\DateTimeImmutable $updated_at): self
-    {
-        $this->updated_at = $updated_at;
+    // public function setUpdatedAt(\DateTimeInterface $updated_at): self
+    // {
+    //     $this->updated_at = $updated_at;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     /**
      * @return Collection|Payment[]
