@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Toutes les articles
+{% endblock %}
+
+{% block body %}
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
+
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+		{% endfor %}
+		{% for message in app.flashes('message') %}
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+		{% endfor %}
+		<h1 class="mt-5 mb-5 text-center">Toutes les articles</h1>
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+		{% endfor %}
+	<div class="jumbotron">
+
+
+<div class="container">
+        <div class="row">
+            {# <div class="col-md-3">
+                {% include "article/_filter.html.twig" with {form: form, min: min, max: max} only %} 
+            </div> #}
+            <div class="col-md-9">
+            
+                <div class="d-flex flex-wrap">
+                  {% for article in articles %}
+					<div class="col-md-4">
+						 {% include "article/_article.html.twig" %} 
+					</div>
+				{% endfor %}
+                </div>
+                {# <div class="mt-4">
+                    {{ knp_pagination_render(articles) }}
+                </div> #}
+            </div>
+        </div>
+    </div>
+
+
+		{# <div class="container mt-5">
+			{% include "article/_filter.html.twig" with {form: form} only %} 
+		<div class="container mt-4">
+			<h1>Voir toutes les articles</h1>
+			<div class="row">
+				{% for article in articles %}
+					<div class="col-md-4">
+						{% include "article/_article.html.twig" %}
+					</div>
+				{% endfor %}
+				<div class="pagination">
+					{{ knp_pagination_render(articles) }}
+				</div> 
+			</div>
+		</div> #}
+
+	</div>
+{% endblock %}

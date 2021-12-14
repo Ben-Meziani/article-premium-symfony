@@ -2,7 +2,9 @@
 
 namespace App\Repository;
 
+use App\Data\ArticleData;
 use App\Entity\Article;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -31,6 +33,39 @@ class ArticleRepository extends ServiceEntityRepository
         ->getQuery()
         ->getResult();
     } 
+
+    private function getSearchQuery(ArticleData $search, $ignoreSalary = false): QueryBuilder
+    {
+        $query = $this
+            ->createQueryBuilder('Article')
+            ->orderBy('Article.created_at', 'DESC');
+
+            if(!empty($search->job)) {
+                $query = $query 
+                        ->andWhere('Article.title LIKE :job')
+                        ->setParameter('job', "%{$search->job}%");
+            } 
+            
+            if(!empty($search->city)) {
+                $query = $query 
+                        ->andWhere('Article.city LIKE :city')
+                        ->setParameter('city', "%{$search->city}%");
+            }
+
+            if(!empty($search->min) && $ignoreSalary = false){
+                $query = $query 
+                ->andWhere('Article.salary >= :min')
+                ->setParameter('min', $search->min);
+            }
+            
+
+            if(!empty($search->max)){
+                $query = $query 
+                ->andWhere('Article.salary <= :max')
+                ->setParameter('max', $search->max);
+            }
+            return $query;
+    }
 
     // /**
     //  * @return Article[] Returns an array of Article objects

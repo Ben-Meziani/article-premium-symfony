@@ -26,21 +26,21 @@
 			{% for article in articles %}
 				<div class="card">
 					<div class="content d-flex flex-column">
-						<div class="title">Poste:
+						<div class="title">Titre :
 							{{ article.title }}</div>
 					</div>
 					<div class="mx-auto mb-2">
-						{# <a href="{{ path('article.show', {id: article.id}) }}" class="d-inline-block"> 
+						<a href="{{ path('article.show', {id: article.id, slug: article.slug}) }}" class="d-inline-block"> 
 							<button class="btn btn-danger">Lire plus</button>
-						</a>#}
+						</a>
 					</div>
 				</div>
 			{% endfor %}
 		</div>
 		<div class="text-center">
-			{# <a href="{{ path('article.index') }}">
+			<a href="{{ path('article.index') }}">
 				<button class="btn btn-danger">Voir toutes les offres</button>
-			</a> #}
+			</a>
 		</div>
 
 
