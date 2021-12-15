@@ -48,6 +48,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $payments;
 
+    /**
+     * @ORM\Column(type="string", length=30)
+     */
+    private $first_name;
+
+    /**
+     * @ORM\Column(type="string", length=30)
+     */
+    private $lastname;
+
     public function __construct()
     {
         $this->payments = new ArrayCollection();
@@ -168,6 +178,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $payment->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->first_name;
+    }
+
+    public function setFirstName(string $first_name): self
+    {
+        $this->first_name = $first_name;
+
+        return $this;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(string $lastname): self
+    {
+        $this->lastname = $lastname;
 
         return $this;
     }

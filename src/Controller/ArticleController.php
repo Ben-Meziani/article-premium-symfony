@@ -28,19 +28,11 @@ class ArticleController extends AbstractController
     }
 
       /**
-     * @Route("/article/{slug}-{id}", name="article.show", requirements={"slug": "[a-z0-9\-]*"})
+     * @Route("/article/{id}", name="article.show", requirements={"slug": "[a-z0-9\-]*"})
      * @return Response
      */
-    public function show(Article $article, string $slug, Request $request): Response
+    public function show(Article $article): Response
     { 
-        //Je fais un slug 
-         if ($article->getSlug() !== $slug)
-         {
-             return $this->redirectToRoute('article.show', [
-                 'id' => $article->getId(),
-                 'slug' => $article->getSlug()
-             ], 301);
-         }
 
         return $this->render('article/show.html.twig', [
             'article' => $article,
