@@ -38,7 +38,7 @@ class AppFixtures extends Fixture
             $article
                 ->setTitle($faker->firstName)
                 ->setDescription($faker->text)
-                ->setPremium(rand(1, 2));
+                ->setPremium(rand(0, 1));
                 $manager->persist($article);
         }
 

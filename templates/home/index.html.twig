@@ -16,7 +16,7 @@
 			</div>
 		{% endfor %}
 		<h1 class="mt-5 mb-5 text-center">Articles</h1>
-	
+
 		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, eius. Illo doloremque reiciendis placeat obcaecati debitis eum tempora quibusdam similique dolores dolorum assumenda tenetur, consequatur repellat fuga excepturi nesciunt modi?</p>
 
 		<h2 class="mt-5 mb-5 text-center">Derniers articles</h2>
@@ -28,9 +28,12 @@
 					<div class="content d-flex flex-column">
 						<div class="title">Titre :
 							{{ article.title }}</div>
+						{% if article.premium == 1 %}
+							<p>Article réservé aux clients premium, ou vous pouvez l'acheter pour 1euro.</p>
+						{% endif %}
 					</div>
 					<div class="mx-auto mb-2">
-						<a href="{{ path('article.show', {id: article.id, slug: article.slug}) }}" class="d-inline-block"> 
+						<a href="{{ path('article.show', {id: article.id}) }}" class="d-inline-block">
 							<button class="btn btn-danger">Lire plus</button>
 						</a>
 					</div>

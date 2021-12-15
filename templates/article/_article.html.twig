@@ -1,9 +1,13 @@
 <div class="card mb-4">
-    <div class="card-body">
-        <h5 class="card-title">
-            <a href="{{ path('article.show', {id: article.id}) }}">
-                Titre : {{ article.title }}
-            </a>
-        </h5>
-    </div>
+	<div class="card-body">
+		<h5 class="card-title">
+			<a href="{{ path('article.show', {id: article.id}) }}">
+				Titre :
+				{{ article.title }}
+			</a>
+			{% if article.premium == 1 %}
+				<p>Article réservé aux clients premium, ou vous pouvez l'acheter pour 1euro.</p>
+			{% endif %}
+		</h5>
+	</div>
 </div>
