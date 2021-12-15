@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Toutes les articles
+{% block title %}Tous les articles
 {% endblock %}
 
 {% block body %}
@@ -20,7 +20,7 @@
 			{{ message }}
 		</div>
 	{% endfor %}
-	<h1 class="mt-5 mb-5 text-center">Toutes les articles</h1>
+	<h1 class="mt-5 mb-5 text-center">Tous les articles</h1>
 	{% for message in app.flashes('success') %}
 		<div class="alert alert-success">
 			{{ message }}
