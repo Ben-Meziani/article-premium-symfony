@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Vos articles' %}
+
+{% block body %}
+
+<div class="container" mt-4>
+
+    <h1 class="mt-5 mb-5 text-center">Vos articles</h1>
+
+
+    {% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+    {% endfor %}
+
+       <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Actions</th>
+                <th>Statut </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for payment in payments %}
+            <tr>
+                <td>{{ payment.article.title }}</td>
+                <td>
+                    <a href="{{ path('article.show', {id: payment.article.id})}}" class="btn btn-secondary">Voir l'article</a>
+                    <form method="post" action="{{ path('user.delete.payment', {id: payment.id}) }}"
+                    style="display: inline-block" onsubmit="return confirm('Etes-vous vraiment sûr ?')">
+                    <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ payment.id) }}">
+                        <button class="btn btn-danger">Supprimer</button>   
+                    </form>
+                </td>
+           </tr>
+            {% endfor %}
+        
+        </tbody>
+    </table>
+
+{% endblock %}

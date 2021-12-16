@@ -22,7 +22,7 @@
 	<body>
 		<header>
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<a class="navbar-brand" href="{{ path('home') }}">Mon Agence d'intérim</a>
+				<a class="navbar-brand" href="{{ path('home') }}">Ben Meziani</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -31,12 +31,12 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item mr-5">
-							<a {% if route_name == "article.index" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href="{{ path('article.index') }}">articles</a>
+							<a {% if route_name == "article.index" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href="{{ path('article.index') }}">Articles</a>
 						</li>
 						{% if app.user %}
 							<li class="nav-item mr-5">
 								<a class="nav-link">Welcome
-									{{ app.user.name }}</a>
+									{{ app.user.lastname }}</a>
 							</li>
 						{% else %}
 							<li class="nav-item ">
@@ -55,13 +55,13 @@
 												Admin
 												</a>
 												<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-												<a class="dropdown-item" href="{{ path('admin.application.index') }}">Consulter les candidatures</a>
+												<a class="dropdown-item" href="{{ path('admin.application.index') }}">Consulter les articles</a>
 												<a class="dropdown-item" href="{{ path('admin.article.new') }}">Créer une nouvelle article</a>												
 												</div>
 											</li>
 											
 									{% else %}
-										<a href="{{path('user.applicant', {id: app.user.id}) }}" class="nav-link">Mon compte</a>
+										<a href="{{path('user.payment', {id: app.user.id}) }}" class="nav-link">Mon compte</a>
 									{% endif %}
 								</li>
 							</ul>

@@ -20,12 +20,12 @@ class Payment
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="payments")
      */
-    private $User;
+    private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="payments")
      */
-    private $Article;
+    private $article;
 
     public function getId(): ?int
     {
@@ -34,24 +34,24 @@ class Payment
 
     public function getUser(): ?User
     {
-        return $this->User;
+        return $this->user;
     }
 
-    public function setUser(?User $User): self
+    public function setUser(?User $user): self
     {
-        $this->User = $User;
+        $this->user = $user;
 
         return $this;
     }
 
     public function getArticle(): ?Article
     {
-        return $this->Article;
+        return $this->article;
     }
 
-    public function setArticle(?Article $Article): self
+    public function setArticle(?Article $article): self
     {
-        $this->Article = $Article;
+        $this->article = $article;
 
         return $this;
     }
