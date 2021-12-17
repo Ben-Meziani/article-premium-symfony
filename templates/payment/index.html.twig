@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue!
+{% endblock %}
+
+{% block body %}
+	<div class="container text-center align-items-center  d-flex h-100">
+	<div class="row align-self-center">
+		<h1 class="lead">Titre de l'article souhaité : {{title}}</h1>
+		<p class="tagline">PROGRESSUS: free business bootstrap template by
+			<a href="http://www.gettemplate.com/?utm_source=progressus&amp;utm_medium=template&amp;utm_campaign=progressus">GetTemplate</a>
+		</p>
+		<p>
+			<a href="{{ path('checkoutt', {id: article.id}) }}" class="btn btn-default btn-lg" role="button">Achat de l'article pour 1€</a>
+			<a class="btn btn-download btn-action btn-lg" href="http://www.gettemplate.com/downloads/progressus.zip" role="button">Abonnement pour 15€/mois</a>
+		</p>
+	</div>
+</div>
+{% endblock %}

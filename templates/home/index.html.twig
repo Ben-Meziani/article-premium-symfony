@@ -34,7 +34,9 @@
 					</div>
 					<div class="mx-auto mb-2">
 						{% if article.premium == 1 %}
-							<button type="button" data-toggle="modal" data-target="#applicationModal" class="btn btn-danger">Payer ou s'abonner</button>
+						<a href="{{ path('payment', {id: article.id}) }}" class="d-inline-block">
+							<button class="btn btn-danger">Payer ou s'abonner</button>
+						</a>
 						{% else %}
 							<a href="{{ path('article.show', {id: article.id}) }}" class="d-inline-block">
 								<button class="btn btn-danger">Lire plus</button>
@@ -44,7 +46,6 @@
 				</div>
 			{% endfor %}
 		</div>
-		{{ include('modal/modal.html.twig') }}
 	</div>
 </div></div><div class="text-center">
 <a href="{{ path('article.index') }}">
