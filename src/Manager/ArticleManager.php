@@ -39,22 +39,6 @@ class ArticleManager
             ->findAll();
     }
 
-    /**
-     * @param User $user
-     * @return mixed
-     */
-    public function countSoldePayment(User $user)
-    {
-        return $this->em->getRepository(Payment::class)
-            ->countSoldePayment($user);
-    }
-
-    public function getPayments(User $user)
-    {
-        return $this->em->getRepository(Payment::class)
-            ->findByUser($user);
-    }
-
     public function intentSecret(Article $article)
     {
         $intent = $this->stripeService->paymentIntent($article);

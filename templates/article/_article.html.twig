@@ -7,6 +7,9 @@
 			</a>
 			{% if article.premium == 1 %}
 				<p>Article réservé aux clients premium, ou vous pouvez l'acheter pour 1euro.</p>
+				<a href="{{ path('payment', {id: article.id}) }}" class="d-inline-block">
+					<button class="btn btn-danger">Payer ou s'abonner</button>
+				</a>
 			{% endif %}
 		</h5>
 	</div>
