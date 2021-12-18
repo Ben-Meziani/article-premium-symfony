@@ -34,9 +34,16 @@
 					</div>
 					<div class="mx-auto mb-2">
 						{% if article.premium == 1 %}
-						<a href="{{ path('payment', {id: article.id}) }}" class="d-inline-block">
-							<button class="btn btn-danger">Payer ou s'abonner</button>
-						</a>
+
+							{% if app.user and app.user.subscription == 1 %}
+								<a href="{{ path('article.show', {id: article.id}) }}" class="d-inline-block">
+									<button class="btn btn-danger">Lire plus</button>
+								</a>
+							{% else %}
+								<a href="{{ path('payment', {id: article.id}) }}" class="d-inline-block">
+									<button class="btn btn-danger">Payer ou s'abonner</button>
+								</a>
+							{% endif %}
 						{% else %}
 							<a href="{{ path('article.show', {id: article.id}) }}" class="d-inline-block">
 								<button class="btn btn-danger">Lire plus</button>

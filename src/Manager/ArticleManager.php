@@ -7,7 +7,6 @@ use App\Entity\Article;
 use App\Entity\User;
 use App\Services\StripeService;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class ArticleManager
 {
@@ -79,8 +78,6 @@ class ArticleManager
         $payment = new Payment();
         $payment->setUser($user);
         $payment->setArticle($article);
-        //$payment->setprice($article->getPrice());
-        //$payment->setReference(uniqid('', false));
         $payment->setBrandStripe($resource['stripeBrand']);
         $payment->setLast4Stripe($resource['stripeLast4']);
         $payment->setIdChargeStripe($resource['stripeId']);

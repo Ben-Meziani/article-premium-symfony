@@ -22,7 +22,7 @@ class UserController extends AbstractController
     /**
      * @Route("/user/payment/{id}", name="user.payment" ,requirements={"id" = "\d+"})
      */
-    public function indexpayment(User $user): Response
+    public function indexPayment(User $user): Response
     {
 
         $this->denyAccessUnlessGranted('onlyuser', $user);
@@ -40,7 +40,7 @@ class UserController extends AbstractController
     /**
      * @Route("/user/payment/{id}", name="user.delete.payment", requirements={"id" = "\d+"}, methods="DELETE")
      */
-    public function deletepayment(Payment $payment, Request $request): Response
+    public function deletePayment(Payment $payment, Request $request): Response
     {
 
         $user = $payment->getUser();

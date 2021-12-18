@@ -58,6 +58,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $lastname;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $subscription;
+
     public function __construct()
     {
         $this->payments = new ArrayCollection();
@@ -202,6 +207,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLastname(string $lastname): self
     {
         $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    public function getSubscription(): ?bool
+    {
+        return $this->subscription;
+    }
+
+    public function setSubscription(?bool $subscription): self
+    {
+        $this->subscription = $subscription;
 
         return $this;
     }

@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class DashboardController extends AbstractController
 {
     /**
-     * @Route("/user/payment/{id}/show", name="checkoutt", methods={"GET", "POST"})
+     * @Route("/user/payment/{id}/show", name="checkoutPayment", methods={"GET", "POST"})
      * @param Article $article
      * @return Response
      */
@@ -70,9 +70,7 @@ class DashboardController extends AbstractController
         }
 
         return $this->render('user/payment_story.html.twig', [
-            'user' => $this->getUser(),
-            'orders' => $articleManager->getOrders($this->getUser()),
-            'sumOrder' => $articleManager->countSoldeOrder($this->getUser()),
+            'user' => $this->getUser()
         ]);
     }
 }
