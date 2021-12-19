@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
+use App\Repository\PaymentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,10 +20,11 @@ class AdminArticleController extends AbstractController
     /**
      * @Route("/", name="admin_article_index", methods={"GET"})
      */
-    public function index(ArticleRepository $articleRepository): Response
+    public function index(PaymentRepository $paymentRepository ,ArticleRepository $articleRepository): Response
     {
         return $this->render('admin_article/index.html.twig', [
             'articles' => $articleRepository->findAll(),
+            'payments' => $paymentRepository->findAll()
         ]);
     }
 

@@ -1,16 +1,24 @@
 <div class="card mb-4">
 	<div class="card-body">
-		<h5 class="card-title">
-			<a href="{{ path('article.show', {id: article.id}) }}">
+		<div class="card-title">
+			<h3>
 				Titre :
 				{{ article.title }}
-			</a>
+			</h3>
 			{% if article.premium == 1 %}
-				{% if app.user and app.user.subscription == 1 %}
+				{% if app.user and (app.user.subscription == 1) %}
 					<a href="{{ path('article.show', {id: article.id}) }}" class="d-inline-block">
 						<button class="btn btn-danger">Lire plus</button>
 					</a>
 				{% else %}
+				{% for payment in payments  %}
+					{% if app.user  and (app.user.id == payment.user.id) and (article.id == payment.article.id) %}
+						<p style="font-size: 10px">Vous avez acheté cet article</p>
+							<a href="{{ path('article.show', {id: article.id}) }}" class="d-inline-block">
+					<button class="btn btn-danger">Lire plus</button>
+				</a>	
+					{% endif %}
+				{% endfor %}
 					<p>Article réservé aux clients premium, ou vous pouvez l'acheter pour 1euro.</p>
 
 					<a href="{{ path('payment', {id: article.id}) }}" class="d-inline-block">
@@ -22,6 +30,6 @@
 					<button class="btn btn-danger">Lire plus</button>
 				</a>
 			{% endif %}
-		</h5>
+		</div>
 	</div>
 </div>
