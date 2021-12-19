@@ -7,15 +7,22 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Annotation\ApiFilter;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
+ *      attributes={
+ *          "order"={"created_at":"DESC"}
+ *      },
  *      normalizationContext={"groups"={"read:article"}},
  *      collectionOperations={"get"},
  *      itemOperations={"get"}
  * )
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
+ * @ApiFilter(SearchFilter::class,
+ * properties={"post": "exact"})
  */
 class Article
 {
