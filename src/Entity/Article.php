@@ -6,8 +6,15 @@ use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
+ * @ApiResource(
+ *      normalizationContext={"groups"={"read:article"}},
+ *      collectionOperations={"get"},
+ *      itemOperations={"get"}
+ * )
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
  */
 class Article
@@ -16,16 +23,20 @@ class Article
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"read:article"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read:article"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=1000000)
+     * @Groups({"read:article"})
+     * 
      */
     private $description;
 
@@ -46,11 +57,13 @@ class Article
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"read:article"})
      */
     private $premium;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read:article"})
      */
     private $author;
 
